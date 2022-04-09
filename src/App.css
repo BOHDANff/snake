@@ -11,4 +11,15 @@
   /*height: 85%;*/
   border: 2px solid black;
 }
-
+.square__wrapper{
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.square{
+  /*background-color: white;*/
+}
+.raw__wrapper{
+  display: flex;
+}
