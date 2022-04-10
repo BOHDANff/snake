@@ -1,14 +1,13 @@
 import React from 'react';
 import useResizeObserver from "@react-hook/resize-observer";
-import Raw from "./Raw";
+import Row from "./Row";
 import {useDispatch, useSelector} from "react-redux";
 import {setSize} from "../store/reducers/SquareReducer";
 
 const SnakeWrapper = (props) => {
     const size = useSelector(state => state.square.size);
-    const elemsNumber = useSelector(state => state.square.elemsNumber);
-    const array = [...Array(elemsNumber).keys()]
     const dispatch = useDispatch();
+    const matrix = useSelector(state => state.square.matrix)
     const root = props.rootRef
     useResizeObserver(root, entry => {
             let rootWidth = entry.contentRect.width
@@ -26,14 +25,15 @@ const SnakeWrapper = (props) => {
         }
     )
     return (
-        <div className="App" ref={root}>
-            <div className="snake__wrapper"
-                 style={{width: `${size}px`, height: `${size}px`}}>
-                {array.map((el, i) => (
-                    <Raw key={i}/>
-                ))}
-            </div>
-        </div>
+        matrix.length !== null &&
+                <div className="App" ref={root}>
+                    <div className="snake__wrapper"
+                         style={{width: `${size}px`, height: `${size}px`}}>
+                        {matrix.map((el, i) =>
+                            <Row key={i} rowSquares={el}/>)}
+                    </div>
+                </div>
+
     );
 };
 

@@ -22,4 +22,5 @@
 }
 .raw__wrapper{
   display: flex;
+  /*border: 2px solid black;*/
 }
