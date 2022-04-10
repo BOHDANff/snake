@@ -2,7 +2,8 @@ import React from 'react';
 import useResizeObserver from "@react-hook/resize-observer";
 import Row from "./Row";
 import {useDispatch, useSelector} from "react-redux";
-import {setSize} from "../store/reducers/SquareReducer";
+import {keyControl, setSize} from "../store/reducers/SquareReducer";
+
 
 const SnakeWrapper = (props) => {
     const size = useSelector(state => state.square.size);
@@ -28,7 +29,10 @@ const SnakeWrapper = (props) => {
         matrix.length !== null &&
                 <div className="App" ref={root}>
                     <div className="snake__wrapper"
-                         style={{width: `${size}px`, height: `${size}px`}}>
+                         style={{width: `${size}px`, height: `${size}px`}}
+                         onKeyDown={event => dispatch(keyControl(event.key))}
+                         tabIndex="0"
+                         >
                         {matrix.map((el, i) =>
                             <Row key={i} rowSquares={el}/>)}
                     </div>

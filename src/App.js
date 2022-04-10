@@ -5,7 +5,7 @@ import SnakeWrapper from "./components/SnakeWrapper";
 function App() {
     const root = useRef(null);
     return (
-    <div className="App" ref={root}>
+    <div ref={root}>
         <SnakeWrapper rootRef={root}/>
     </div>
   );

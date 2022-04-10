@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {setBody} from "../store/reducers/SquareReducer";
+import {setFirstBody} from "../store/reducers/SquareReducer";
 
 const Square = (props) => {
     const wrapperSize = useSelector(state => state.square.size);
@@ -16,7 +16,8 @@ const Square = (props) => {
                  width: `${size}px`,
                  height: `${size}px`
              }}
-        onClick={() => dispatch(setBody(props.id))}>
+        onClick={() => dispatch(setFirstBody(props.id))}
+            >
             <div className="square"
                  style={{
                      width: `${size - 2}px`,
