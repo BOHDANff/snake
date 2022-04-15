@@ -18,25 +18,31 @@ export const squareSlice = createSlice({
             state.size = action.payload
         },
         setFirstBody(state, action){
-            if (!state.body.length) {
-
-            }
             const [x, y] = action.payload
-            state.matrix[y][x].isBody = true
-            state.body.push(action.payload)
+            if (!state.body.length) {
+                state.matrix[y][x].isBody = true
+                state.body.push(action.payload)
+            } else {
+                state.matrix[y][x].isApple = true
+            }
+
         },
         keyControl(state, action){
             if (state.body.length) {
-                const keyName = action.payload;
                 const [headX, headY] = state.body[0]
+                const direction = directionRuler(headX, headY, state)
+                for (let i = state.body.length - 1; i > 0; i--) {
+                    state.body[i] = state.body[i-1]
+                }
+                const keyName = action.payload;
                 if (keyName === "ArrowRight") {
-                    directionRuler(headX, headY, 1, 0, state)
+                    direction(1, 0)
                 } else if (keyName === "ArrowLeft") {
-                    directionRuler(headX, headY, -1, 0, state)
+                    direction(-1, 0)
                 } else if (keyName === "ArrowUp") {
-                    directionRuler(headX, headY, 0, -1, state)
+                    direction(0, -1)
                 } else if (keyName === "ArrowDown") {
-                    directionRuler(headX, headY, 0, 1, state)
+                    direction(0, 1)
                 }
             }
     }

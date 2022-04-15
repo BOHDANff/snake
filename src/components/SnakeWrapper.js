@@ -27,12 +27,11 @@ const SnakeWrapper = (props) => {
     )
     return (
         matrix.length !== null &&
-                <div className="App" ref={root}>
+                <div className="App" ref={root}
+                     onKeyDown={event => dispatch(keyControl(event.key))}
+                     tabIndex="0">
                     <div className="snake__wrapper"
-                         style={{width: `${size}px`, height: `${size}px`}}
-                         onKeyDown={event => dispatch(keyControl(event.key))}
-                         tabIndex="0"
-                         >
+                         style={{width: `${size}px`, height: `${size}px`}}>
                         {matrix.map((el, i) =>
                             <Row key={i} rowSquares={el}/>)}
                     </div>

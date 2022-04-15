@@ -6,9 +6,6 @@ const Square = (props) => {
     const wrapperSize = useSelector(state => state.square.size);
     const elemsNumber = useSelector(state => state.square.elemsNumber);
     const size = wrapperSize * elemsNumber/100;
-    const matrix = useSelector(state => state.square.matrix);
-    const [x,y] = props.id
-    let isBody = matrix[y][x].isBody
     const dispatch = useDispatch();
     return (
         <div className="square__wrapper"
@@ -22,7 +19,7 @@ const Square = (props) => {
                  style={{
                      width: `${size - 2}px`,
                      height: `${size - 2}px`,
-                     backgroundColor: isBody? 'white': 'black'
+                     backgroundColor: props.isBody? 'white': props.isApple? 'red' : 'black'
                  }}>
             </div>
         </div>

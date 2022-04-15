@@ -5,7 +5,7 @@ export function createMatrix (matrixSize) {
             row[i] = {
                 id: [i, rowNum],
                 isBody: false,
-                isHead: false
+                isApple: false
             }
         })
         return row
